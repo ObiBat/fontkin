@@ -7,6 +7,7 @@ import {
 } from "@/lib/data/combos";
 import { ComboCard, ComboHeroCard } from "@/components/combo-card";
 import { UseCaseCarousel } from "@/components/use-case-carousel";
+import { HeroFontShowcase } from "@/components/hero-font-showcase";
 import { fontIdToVariable } from "@/lib/fonts";
 
 export default function HomePage() {
@@ -78,6 +79,16 @@ export default function HomePage() {
   // Featured combo for hero
   const featuredCombo = allCombos.find((c) => c.id === "cabinet-grotesk-spectral") || allCombos[0];
 
+  // Curated selection for hero showcase - mix of styles
+  const showcaseCombos = [
+    "cabinet-grotesk-spectral",
+    "space-grotesk-playfair",
+    "general-sans-cormorant",
+    "sora-fraunces",
+    "jost-instrument-serif",
+    "outfit-eb-garamond",
+  ].map(id => allCombos.find(c => c.id === id)).filter(Boolean) as typeof allCombos;
+
   return (
     <div className="scroll-smooth">
       {/* Hero Section - Full Viewport */}
@@ -129,39 +140,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right - Preview Cards */}
-            <div className="hidden lg:block relative">
-              <div className="space-y-4">
-                {trendingCombos.slice(0, 3).map((combo, i) => (
-                  <Link
-                    key={combo.id}
-                    href={`/combo/${combo.slug}`}
-                    className="block p-6 bg-card border rounded-2xl hover:border-foreground/20 transition-all duration-300 animate-slide-up group"
-                    style={{ animationDelay: `${300 + i * 100}ms` }}
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] uppercase tracking-wider text-caption">
-                        {combo.vibeTags[0]}
-                      </span>
-                      <ArrowRight className="h-3 w-3 text-caption group-hover:translate-x-1 transition-transform" />
-                    </div>
-                    <p
-                      className="text-2xl md:text-3xl leading-tight mb-2"
-                      style={{ fontFamily: fontIdToVariable[combo.hierarchy.h1.fontId] }}
-                    >
-                      {combo.name.split(" + ")[0]}
-                    </p>
-                    <p
-                      className="text-sm text-body"
-                      style={{ fontFamily: fontIdToVariable[combo.hierarchy.body.fontId] }}
-                    >
-                      Paired with {combo.secondaryFont.name}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-              {/* Decorative element */}
-              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-foreground/[0.02] to-transparent rounded-full blur-3xl" />
+            {/* Right - Animated Font Showcase */}
+            <div className="hidden lg:block">
+              <HeroFontShowcase combos={showcaseCombos} />
             </div>
           </div>
         </div>
