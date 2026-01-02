@@ -25,7 +25,7 @@ const cardVariants = {
     transition: {
       delay: i * 0.06,
       duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   }),
 };
@@ -35,7 +35,7 @@ const heartVariants = {
   tap: { scale: 0.9 },
   favorite: {
     scale: [1, 1.2, 1],
-    transition: { duration: 0.25, ease: "easeOut" },
+    transition: { duration: 0.25, ease: "easeOut" as const },
   },
 };
 
