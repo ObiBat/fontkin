@@ -283,21 +283,21 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
     >
       <Link href={`/combo/${combo.slug}`} className="group block h-full">
         <motion.article
-          className="h-full flex flex-col border border-border bg-card overflow-hidden relative rounded-2xl"
+          className="h-full flex flex-col border border-border bg-card overflow-hidden relative rounded-xl sm:rounded-2xl"
           whileHover={{ y: -3 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Action buttons - appear on hover */}
-          <div className="absolute top-5 right-5 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {/* Action buttons - visible on mobile, hover on desktop */}
+          <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-10 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <ActionButtons />
           </div>
 
           {/* Specimen area */}
-          <div className="flex-1 p-7 md:p-8 flex flex-col">
+          <div className="flex-1 p-4 sm:p-6 md:p-8 flex flex-col">
             {/* Font classification - refined label */}
-            <div className="flex items-center gap-3 mb-5">
+            <div className="flex items-center gap-3 mb-3 sm:mb-5">
               <span
-                className="text-[10px] uppercase tracking-[0.15em] text-caption"
+                className="text-[9px] sm:text-[10px] uppercase tracking-[0.15em] text-caption"
                 style={captionStyle}
               >
                 {primaryFont.classification === secondaryFont.classification
@@ -308,15 +308,15 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
 
             {/* Headline */}
             <h3
-              className="text-[1.65rem] md:text-[1.85rem] leading-[1.15] tracking-tight mb-4 text-balance pr-10"
+              className="text-lg sm:text-xl md:text-[1.85rem] leading-[1.15] tracking-tight mb-2 sm:mb-4 text-balance pr-8 sm:pr-10"
               style={headingStyle}
             >
               {sample.headline}
             </h3>
 
-            {/* Subhead */}
+            {/* Subhead - hidden on very small screens */}
             <p
-              className="text-[15px] text-subhead mb-4 leading-relaxed"
+              className="hidden sm:block text-[14px] md:text-[15px] text-subhead mb-3 md:mb-4 leading-relaxed"
               style={subheadStyle}
             >
               {sample.subhead}
@@ -324,7 +324,7 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
 
             {/* Body sample */}
             <p
-              className="text-[13px] text-body line-clamp-3 flex-1 leading-relaxed"
+              className="text-[12px] sm:text-[13px] text-body line-clamp-2 sm:line-clamp-3 flex-1 leading-relaxed"
               style={bodyStyle}
             >
               {sample.body}
@@ -332,14 +332,14 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
           </div>
 
           {/* Meta footer - refined */}
-          <div className="px-7 md:px-8 py-4 border-t">
-            <div className="flex items-center justify-between">
-              <h4 className="text-[13px] font-medium tracking-tight">{combo.name}</h4>
-              <div className="flex items-center gap-3">
+          <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 border-t">
+            <div className="flex items-center justify-between gap-2">
+              <h4 className="text-[11px] sm:text-[13px] font-medium tracking-tight truncate">{combo.name}</h4>
+              <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                 {isFav && (
                   <Heart className="h-3 w-3 fill-foreground text-foreground" />
                 )}
-                <span className="text-[10px] uppercase tracking-[0.1em] text-caption">
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.1em] text-caption hidden xs:inline">
                   {combo.timelessness.replace("_", " ")}
                 </span>
               </div>
@@ -391,20 +391,20 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
     >
       <Link href={`/combo/${combo.slug}`} className="group block">
         <motion.article
-          className="relative border border-border hover:border-foreground/30 transition-colors duration-500 overflow-hidden rounded-2xl"
+          className="relative border border-border hover:border-foreground/30 transition-colors duration-500 overflow-hidden rounded-xl sm:rounded-2xl"
           whileHover={{ scale: 1.002 }}
           transition={{ duration: 0.4 }}
         >
           {/* Favorite button */}
           <motion.button
             onClick={handleFavoriteClick}
-            className="absolute top-6 right-6 z-10 p-3 rounded-full bg-background/80 backdrop-blur-sm text-caption hover:text-foreground hover:bg-background transition-colors"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 p-2.5 sm:p-3 rounded-full bg-background/80 backdrop-blur-sm text-caption hover:text-foreground hover:bg-background transition-colors"
             whileTap={{ scale: 0.9 }}
             title={isFav ? "Remove from favorites" : "Add to favorites"}
           >
             <Heart
               className={cn(
-                "h-5 w-5 transition-colors",
+                "h-4 w-4 sm:h-5 sm:w-5 transition-colors",
                 isFav ? "fill-foreground text-foreground" : ""
               )}
             />
@@ -412,9 +412,9 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
 
           <div className="grid md:grid-cols-2">
             {/* Left: Large type specimen */}
-            <div className="p-10 md:p-14 lg:p-20 bg-gradient-to-br from-muted/40 to-transparent">
+            <div className="p-6 sm:p-8 md:p-14 lg:p-20 bg-gradient-to-br from-muted/40 to-transparent">
               <h2
-                className="text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[0.95] mb-8"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl tracking-tight leading-[0.95] mb-4 sm:mb-6 md:mb-8 pr-10"
                 style={{
                   fontFamily: fontIdToVariable[hierarchy.h1.fontId],
                   fontWeight: hierarchy.h1.weight,
@@ -424,7 +424,7 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
                 {sample.headline}
               </h2>
               <p
-                className="text-xl md:text-2xl text-subhead max-w-md"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-subhead max-w-md"
                 style={{
                   fontFamily: fontIdToVariable[hierarchy.h2.fontId],
                   fontWeight: hierarchy.h2.weight,
@@ -436,10 +436,10 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
             </div>
 
             {/* Right: Body specimen + meta */}
-            <div className="p-10 md:p-14 lg:p-20 flex flex-col justify-between border-t md:border-t-0 md:border-l">
+            <div className="p-6 sm:p-8 md:p-14 lg:p-20 flex flex-col justify-between border-t md:border-t-0 md:border-l">
               <div>
                 <p
-                  className="text-lg md:text-xl text-body leading-relaxed mb-8"
+                  className="text-sm sm:text-base md:text-lg lg:text-xl text-body leading-relaxed mb-6 md:mb-8"
                   style={{
                     fontFamily: fontIdToVariable[hierarchy.body.fontId],
                     fontWeight: hierarchy.body.weight,
@@ -450,9 +450,9 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
                 </p>
 
                 {sample.pullQuote && (
-                  <blockquote className="border-l-2 border-foreground/20 pl-6">
+                  <blockquote className="border-l-2 border-foreground/20 pl-4 sm:pl-6 hidden sm:block">
                     <p
-                      className="text-lg italic text-subhead"
+                      className="text-base md:text-lg italic text-subhead"
                       style={{
                         fontFamily: fontIdToVariable[hierarchy.h2.fontId],
                         fontWeight: 400,
@@ -461,7 +461,7 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
                       &ldquo;{sample.pullQuote}&rdquo;
                     </p>
                     <cite
-                      className="text-sm text-caption not-italic mt-2 block"
+                      className="text-xs sm:text-sm text-caption not-italic mt-2 block"
                       style={{
                         fontFamily: fontIdToVariable[hierarchy.caption.fontId],
                       }}
@@ -472,15 +472,15 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
                 )}
               </div>
 
-              <div className="mt-10 pt-6 border-t flex items-center justify-between">
-                <div>
-                  <h3 className="text-base font-medium mb-1">{combo.name}</h3>
-                  <p className="text-sm text-body">
+              <div className="mt-6 md:mt-10 pt-4 md:pt-6 border-t flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <h3 className="text-sm sm:text-base font-medium mb-0.5 sm:mb-1 truncate">{combo.name}</h3>
+                  <p className="text-xs sm:text-sm text-body truncate">
                     {primaryFont.name}
                     {primaryFont.id !== secondaryFont.id && ` + ${secondaryFont.name}`}
                   </p>
                 </div>
-                <span className="text-xs uppercase tracking-wider text-caption group-hover:text-foreground transition-colors">
+                <span className="text-[10px] sm:text-xs uppercase tracking-wider text-caption group-hover:text-foreground transition-colors shrink-0">
                   View Details →
                 </span>
               </div>
