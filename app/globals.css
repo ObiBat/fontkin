@@ -4,32 +4,32 @@
 
 @layer base {
   :root {
-    /* Background & Surface - Warm paper tones */
-    --background: 40 20% 99%;
+    /* Background & Surface - Professional cool off-white */
+    --background: 220 15% 97%;
     --foreground: 0 0% 6%;
 
-    /* Card surfaces - Slight warmth */
-    --card: 40 15% 98%;
+    /* Card surfaces - Pure white for contrast */
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 6%;
 
     /* Popover */
-    --popover: 40 20% 99%;
+    --popover: 0 0% 100%;
     --popover-foreground: 0 0% 6%;
 
     /* Primary action - Deep black */
     --primary: 0 0% 6%;
-    --primary-foreground: 40 20% 99%;
+    --primary-foreground: 0 0% 100%;
 
     /* Secondary/muted surfaces */
-    --secondary: 40 10% 96%;
+    --secondary: 220 10% 94%;
     --secondary-foreground: 0 0% 12%;
 
     /* Muted */
-    --muted: 40 10% 96%;
+    --muted: 220 10% 94%;
     --muted-foreground: 0 0% 38%;
 
     /* Accent */
-    --accent: 40 10% 96%;
+    --accent: 220 10% 94%;
     --accent-foreground: 0 0% 12%;
 
     /* Destructive */

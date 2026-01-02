@@ -3,7 +3,7 @@
 import { useCallback, useMemo } from "react";
 import { useLocalStorage } from "./use-local-storage";
 
-const STORAGE_KEY = "typographica-compare";
+const STORAGE_KEY = "fontkin-compare";
 const MAX_COMPARE_ITEMS = 3;
 
 interface UseComparisonReturn {

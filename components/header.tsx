@@ -25,7 +25,7 @@ export function Header() {
               className="text-lg md:text-xl uppercase tracking-wide hover:opacity-70 transition-opacity"
               style={{ fontFamily: fontIdToVariable["anton"] }}
             >
-              Typographica
+              Fontkin
             </Link>
             <div className="flex items-center gap-8 md:gap-10">
               <Link

@@ -27,7 +27,7 @@ export default function Icon() {
             fontFamily: "Arial Black, sans-serif",
           }}
         >
-          T
+          F
         </span>
       </div>
     ),

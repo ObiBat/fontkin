@@ -11,8 +11,8 @@ import {
 } from "react";
 
 // Storage keys
-const FAVORITES_KEY = "typographica-favorites";
-const COMPARE_KEY = "typographica-compare";
+const FAVORITES_KEY = "fontkin-favorites";
+const COMPARE_KEY = "fontkin-compare";
 const MAX_COMPARE_ITEMS = 3;
 
 interface AppStateContextValue {

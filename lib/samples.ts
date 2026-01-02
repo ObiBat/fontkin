@@ -359,6 +359,78 @@ export const comboSamples: Record<string, ComboSample> = {
     pullQuote: "Strength does not come from physical capacity. It comes from an indomitable will.",
     micro: "Mahatma Gandhi",
   },
+
+  // === AVANT-GARDE & EXPERIMENTAL ===
+  "cabinet-grotesk-spectral": {
+    headline: "Defy Convention",
+    subhead: "Where optical precision meets editorial soul",
+    body: "Cabinet Grotesk's variable optical sizing creates headlines that breathe at any scale. Spectral's screen-native elegance carries the narrative forward—a pairing for brands that refuse to play it safe.",
+    pullQuote: "Art is not what you see, but what you make others see.",
+    micro: "Edgar Degas",
+  },
+  "general-sans-cormorant": {
+    headline: "Understated Opulence",
+    subhead: "Swiss restraint meets Parisian grace",
+    body: "The precision of Helvetica's descendants paired with the timeless romance of Garamond. General Sans provides the framework; Cormorant adds the flourish. Luxury that whispers rather than shouts.",
+    pullQuote: "Elegance is refusal.",
+    micro: "Coco Chanel",
+  },
+  "sora-fraunces": {
+    headline: "Playful Precision",
+    subhead: "When algorithms learn to dance",
+    body: "Sora's calculated curves meet Fraunces' delightful wonkiness—a conversation between control and chaos. For brands that take their craft seriously but never themselves.",
+    pullQuote: "The creation of something new is not accomplished by the intellect but by the play instinct.",
+    micro: "Carl Jung",
+  },
+  "outfit-eb-garamond": {
+    headline: "Past Meets Pixel",
+    subhead: "Five centuries compressed into one pairing",
+    body: "Outfit was born for screens; EB Garamond carries 500 years of typographic wisdom. Together, they prove that innovation and tradition aren't opposites—they're dance partners.",
+    pullQuote: "In order to be irreplaceable, one must always be different.",
+    micro: "Coco Chanel",
+  },
+  "archivo-crimson-pro": {
+    headline: "Authoritative Warmth",
+    subhead: "The voice of trusted institutions",
+    body: "Archivo's grotesque strength commands the headline while Crimson Pro's old-style warmth invites deeper reading. A pairing for organizations that lead with confidence and connect with heart.",
+    pullQuote: "The measure of intelligence is the ability to change.",
+    micro: "Albert Einstein",
+  },
+  "jost-instrument-serif": {
+    headline: "Geometric Poetry",
+    subhead: "Bauhaus philosophy meets modern editorial",
+    body: "Jost channels the spirit of Futura with contemporary refinement. Instrument Serif adds the editorial credibility that pure geometry can lack—functional idealism with emotional depth.",
+    pullQuote: "Design is not a thing you do—it's a way you live.",
+    micro: "Alan Fletcher",
+  },
+  "plus-jakarta-libre-baskerville": {
+    headline: "Trust Reimagined",
+    subhead: "Modern warmth meets centuries of credibility",
+    body: "Plus Jakarta's friendly geometry opens doors while Libre Baskerville's classical authority closes deals. A pairing for brands building the future on foundations of trust.",
+    pullQuote: "Trust is built with consistency.",
+    micro: "Lincoln Chafee",
+  },
+  "space-grotesk-playfair": {
+    headline: "Tension by Design",
+    subhead: "When tech culture meets editorial tradition",
+    body: "The deliberate friction between Space Grotesk's digital-native quirks and Playfair's high-contrast elegance creates visual interest that demands attention. Opposites attract.",
+    pullQuote: "Creativity is just connecting things.",
+    micro: "Steve Jobs",
+  },
+  "figtree-literata": {
+    headline: "Comfort Zone",
+    subhead: "Typography that feels like home",
+    body: "Figtree welcomes readers with warm, open forms while Literata—Google's ebook-optimized serif—makes long-form reading a pleasure. For platforms where people come to stay.",
+    pullQuote: "The details are not the details. They make the design.",
+    micro: "Charles Eames",
+  },
+  "manrope-source-serif": {
+    headline: "Considered Choices",
+    subhead: "Distinctive clarity for thoughtful brands",
+    body: "Manrope's semi-condensed character adds subtle distinction to headlines while Source Serif's Adobe-engineered legibility handles extended reading with grace. Quiet confidence, impeccable execution.",
+    pullQuote: "Have nothing in your houses that you do not know to be useful or believe to be beautiful.",
+    micro: "William Morris",
+  },
 };
 
 // Fallback sample for any combo not explicitly defined

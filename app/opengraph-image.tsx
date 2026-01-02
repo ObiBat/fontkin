@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Typographica - Professional Font Pairing Lab";
+export const alt = "Fontkin - Professional Font Pairing Lab";
 export const size = {
   width: 1200,
   height: 630,
@@ -42,6 +42,7 @@ export default async function Image() {
               alignItems: "center",
               justifyContent: "center",
               marginRight: "24px",
+              borderRadius: "16px",
             }}
           >
             <span
@@ -52,7 +53,7 @@ export default async function Image() {
                 fontFamily: "Arial Black, sans-serif",
               }}
             >
-              T
+              F
             </span>
           </div>
           <span
@@ -65,7 +66,7 @@ export default async function Image() {
               fontFamily: "Arial Black, sans-serif",
             }}
           >
-            Typographica
+            Fontkin
           </span>
         </div>
 
@@ -197,7 +198,7 @@ export default async function Image() {
             letterSpacing: "0.15em",
           }}
         >
-          typographica.design
+          fontkin.com
         </div>
       </div>
     ),

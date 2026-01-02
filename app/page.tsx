@@ -14,7 +14,16 @@ export default function HomePage() {
   const timelessCombos = getCombosByTimelessness("timeless");
   const trendingCombos = getCombosByTimelessness("trending");
 
-  // All use case categories for carousel
+  // Helper to prioritize specific combos at the front
+  const prioritizeCombos = (combos: typeof allCombos, priorityIds: string[]) => {
+    const prioritized = priorityIds
+      .map(id => combos.find(c => c.id === id))
+      .filter(Boolean) as typeof allCombos;
+    const rest = combos.filter(c => !priorityIds.includes(c.id));
+    return [...prioritized, ...rest];
+  };
+
+  // All use case categories for carousel - featuring new avant-garde pairings
   const useCaseCategories = [
     {
       id: "editorial",
@@ -22,7 +31,7 @@ export default function HomePage() {
       title: "Editorial & Publishing",
       description: "Long-form reading experiences",
       href: "/explore?context=editorial",
-      combos: getCombosByContext("editorial"),
+      combos: prioritizeCombos(getCombosByContext("editorial"), ["cabinet-grotesk-spectral", "space-grotesk-playfair"]),
     },
     {
       id: "saas-ui",
@@ -30,7 +39,7 @@ export default function HomePage() {
       title: "Product & Interface",
       description: "SaaS, apps & dashboards",
       href: "/explore?context=saas-ui",
-      combos: getCombosByContext("saas-ui"),
+      combos: prioritizeCombos(getCombosByContext("saas-ui"), ["plus-jakarta-libre-baskerville", "sora-fira-code"]),
     },
     {
       id: "branding",
@@ -38,7 +47,7 @@ export default function HomePage() {
       title: "Branding & Identity",
       description: "Logos, marketing & brand assets",
       href: "/explore?context=branding",
-      combos: getCombosByContext("branding"),
+      combos: prioritizeCombos(getCombosByContext("branding"), ["general-sans-cormorant", "jost-instrument-serif"]),
     },
     {
       id: "portfolio",
@@ -46,7 +55,7 @@ export default function HomePage() {
       title: "Portfolio & Creative",
       description: "Personal sites & showcases",
       href: "/explore?context=portfolio",
-      combos: getCombosByContext("portfolio"),
+      combos: prioritizeCombos(getCombosByContext("portfolio"), ["outfit-eb-garamond", "sora-fraunces"]),
     },
     {
       id: "landing-page",
@@ -54,7 +63,7 @@ export default function HomePage() {
       title: "Landing Pages",
       description: "Marketing & conversion focused",
       href: "/explore?context=landing-page",
-      combos: getCombosByContext("landing-page"),
+      combos: prioritizeCombos(getCombosByContext("landing-page"), ["figtree-literata", "space-grotesk-playfair"]),
     },
     {
       id: "ecommerce",
@@ -62,12 +71,12 @@ export default function HomePage() {
       title: "E-Commerce",
       description: "Online stores & marketplaces",
       href: "/explore?context=ecommerce",
-      combos: getCombosByContext("ecommerce"),
+      combos: prioritizeCombos(getCombosByContext("ecommerce"), ["general-sans-cormorant", "sora-fraunces"]),
     },
   ].filter(cat => cat.combos.length > 0);
 
   // Featured combo for hero
-  const featuredCombo = allCombos.find((c) => c.id === "playfair-inter") || allCombos[0];
+  const featuredCombo = allCombos.find((c) => c.id === "cabinet-grotesk-spectral") || allCombos[0];
 
   return (
     <div className="snap-y snap-mandatory h-[calc(100vh-4rem)] overflow-y-auto scroll-smooth">

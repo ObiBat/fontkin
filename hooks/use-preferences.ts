@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useLocalStorage } from "./use-local-storage";
 import { FilterState, SortOption } from "@/lib/types";
 
-const STORAGE_KEY = "typographica-preferences";
+const STORAGE_KEY = "fontkin-preferences";
 
 type Theme = "light" | "dark" | "system";
 

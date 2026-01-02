@@ -3,7 +3,7 @@
 import { useCallback } from "react";
 import { useLocalStorage } from "./use-local-storage";
 
-const STORAGE_KEY = "typographica-recent";
+const STORAGE_KEY = "fontkin-recent";
 const MAX_RECENT_ITEMS = 10;
 
 interface UseRecentReturn {

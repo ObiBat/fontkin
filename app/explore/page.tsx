@@ -96,7 +96,7 @@ export default function ExplorePage() {
               </div>
 
               {/* Grid - scrollable */}
-              <div className="flex-1 overflow-y-auto scrollbar-thin pb-6">
+              <div className="flex-1 overflow-y-auto overflow-x-visible scrollbar-thin pt-2 pb-6 -mt-2">
                 {filteredCombos.length === 0 ? (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -119,7 +119,7 @@ export default function ExplorePage() {
                   </motion.div>
                 ) : (
                   <div className={cn(
-                    "grid gap-6",
+                    "grid gap-6 px-1",
                     gridSize === "default"
                       ? "md:grid-cols-2 xl:grid-cols-3"
                       : "md:grid-cols-3 xl:grid-cols-4"

@@ -9,10 +9,10 @@ import { AppStateProvider } from "@/contexts/app-state";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Typographica — Professional Font Pairing Lab",
+  title: "Fontkin — Professional Font Pairing Lab",
   description:
     "Stop guessing font pairings. Explore curated, professional combinations with real web + editorial previews, smart filters, and one-click developer + AI-friendly exports.",
-  keywords: ["typography", "font pairing", "web fonts", "google fonts", "design system", "tailwind", "css"],
+  keywords: ["typography", "font pairing", "web fonts", "google fonts", "design system", "tailwind", "css", "fontkin"],
 };
 
 export default function RootLayout({
@@ -41,7 +41,7 @@ export default function RootLayout({
                           Free Forever
                         </p>
                         <p className="text-sm text-body max-w-md">
-                          Typographica is free to use. If it helps your work, consider buying me a coffee to keep the project alive.
+                          Fontkin is free to use. If it helps your work, consider buying me a coffee to keep the project alive.
                         </p>
                       </div>
                       <a
@@ -64,10 +64,10 @@ export default function RootLayout({
                         className="text-xl uppercase tracking-wide mb-3"
                         style={{ fontFamily: fontIdToVariable["anton"] }}
                       >
-                        Typographica
+                        Fontkin
                       </p>
                       <p className="text-sm text-caption leading-relaxed">
-                        Curated font pairings for the modern web. Find the perfect typographic voice for your next project.
+                        Curated font pairings for the modern web. Find your fonts&apos; perfect kin.
                       </p>
                     </div>
 
@@ -96,7 +96,7 @@ export default function RootLayout({
                       <p className="text-sm text-body leading-relaxed mb-4">
                         Built by <span className="text-foreground font-medium">Obi Batbileg</span> — a designer & developer passionate about typography and crafting beautiful digital experiences.
                       </p>
-                      <div className="flex items-center gap-4">
+                      <div className="flex flex-wrap items-center gap-4 mb-4">
                         <a
                           href="https://obicreative.dev"
                           target="_blank"
@@ -122,12 +122,21 @@ export default function RootLayout({
                           GitHub
                         </a>
                       </div>
+                      <div className="pt-3 border-t border-dashed">
+                        <p className="text-xs text-caption mb-2">Open for feedback & discussion</p>
+                        <a
+                          href="mailto:obi@craefto.com"
+                          className="text-sm text-foreground hover:opacity-70 transition-opacity"
+                        >
+                          obi@craefto.com
+                        </a>
+                      </div>
                     </div>
                   </div>
 
                   {/* Copyright */}
                   <div className="mt-12 pt-6 border-t text-xs text-caption">
-                    <p>© {new Date().getFullYear()} Typographica. Made with love for designers & developers.</p>
+                    <p>© {new Date().getFullYear()} Fontkin. Made with love for designers & developers.</p>
                   </div>
                 </div>
               </footer>

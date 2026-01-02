@@ -80,7 +80,7 @@ export function UseCaseCarousel({ categories }: UseCaseCarouselProps) {
       </div>
 
       {/* Carousel Content */}
-      <div className="overflow-hidden">
+      <div className="overflow-visible -mx-4 px-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
@@ -115,7 +115,7 @@ export function UseCaseCarousel({ categories }: UseCaseCarouselProps) {
                     View All →
                   </Link>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-4 py-2">
                   {category.combos.slice(0, 2).map((combo) => (
                     <ComboCard key={combo.id} combo={combo} variant="compact" />
                   ))}

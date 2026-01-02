@@ -3,7 +3,7 @@
 import { useCallback, useMemo } from "react";
 import { useLocalStorage } from "./use-local-storage";
 
-const STORAGE_KEY = "typographica-favorites";
+const STORAGE_KEY = "fontkin-favorites";
 
 interface UseFavoritesReturn {
   favorites: string[];
