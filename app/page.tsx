@@ -79,7 +79,7 @@ export default function HomePage() {
   const featuredCombo = allCombos.find((c) => c.id === "cabinet-grotesk-spectral") || allCombos[0];
 
   return (
-    <div className="snap-y snap-mandatory h-[calc(100vh-4rem)] overflow-y-auto scroll-smooth">
+    <div className="scroll-smooth">
       {/* Hero Section - Full Viewport */}
       <section className="snap-start min-h-[calc(100vh-4rem)] flex flex-col">
         <div className="flex-1 flex flex-col justify-center max-w-[1600px] mx-auto w-full px-6 md:px-12 lg:px-20 py-12">
