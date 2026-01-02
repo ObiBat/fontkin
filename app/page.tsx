@@ -82,53 +82,91 @@ export default function HomePage() {
     <div className="scroll-smooth">
       {/* Hero Section - Full Viewport */}
       <section className="snap-start min-h-[calc(100vh-4rem)] flex flex-col">
-        <div className="flex-1 flex flex-col justify-center max-w-[1600px] mx-auto w-full px-6 md:px-12 lg:px-20 py-12">
-          <div className="max-w-5xl">
-            <p className="text-[11px] uppercase tracking-[0.25em] text-caption mb-8 animate-fade-in">
-              The Professional Font Pairing Lab
-            </p>
-            <h1
-              className="text-6xl md:text-7xl lg:text-[7rem] xl:text-[9rem] leading-[0.82] mb-10"
-              style={{ fontFamily: fontIdToVariable["anton"] }}
-            >
-              <span className="block overflow-hidden">
-                <span className="block animate-slide-up [animation-duration:0.7s]">TYPOGRAPHY</span>
-              </span>
-              <span className="block overflow-hidden">
-                <span className="block text-caption/50 text-[0.6em] tracking-[0.2em] animate-slide-up [animation-duration:0.7s] delay-100">THAT SPEAKS</span>
-              </span>
-              <span className="block overflow-hidden mt-2">
-                <span className="block animate-slide-up [animation-duration:0.7s] delay-200">
-                  <span className="bg-foreground text-background px-5 py-2 inline-block animate-clip-reveal delay-400">VOLUMES</span>
+        <div className="flex-1 flex items-center max-w-[1600px] mx-auto w-full px-6 md:px-12 lg:px-20 py-12">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full">
+            {/* Left - Content */}
+            <div>
+              <p className="text-[11px] uppercase tracking-[0.25em] text-caption mb-8 animate-fade-in">
+                The Professional Font Pairing Lab
+              </p>
+              <h1
+                className="text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[0.85] mb-8"
+                style={{ fontFamily: fontIdToVariable["anton"] }}
+              >
+                <span className="block overflow-hidden">
+                  <span className="block animate-slide-up [animation-duration:0.7s]">TYPOGRAPHY</span>
                 </span>
-              </span>
-            </h1>
-            <p
-              className="text-lg md:text-xl text-body max-w-lg leading-[1.7] mb-12 animate-slide-up delay-300"
-              style={{ fontFamily: fontIdToVariable["space-grotesk"] }}
-            >
-              Curated font combinations for designers who understand that typography
-              is not decoration. It&apos;s the voice of your design.
-            </p>
-            <div className="flex items-center gap-8 animate-slide-up delay-200">
-              <Link
-                href="/explore"
-                className="inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.12em] bg-foreground text-background px-7 py-4 hover:opacity-90 transition-opacity rounded-full"
+                <span className="block overflow-hidden">
+                  <span className="block text-caption/50 text-[0.65em] tracking-[0.15em] animate-slide-up [animation-duration:0.7s] delay-100">THAT SPEAKS</span>
+                </span>
+                <span className="block overflow-hidden mt-1">
+                  <span className="block animate-slide-up [animation-duration:0.7s] delay-200">
+                    <span className="bg-foreground text-background px-4 py-1 inline-block animate-clip-reveal delay-400">VOLUMES</span>
+                  </span>
+                </span>
+              </h1>
+              <p
+                className="text-base md:text-lg text-body max-w-md leading-[1.7] mb-10 animate-slide-up delay-300"
+                style={{ fontFamily: fontIdToVariable["space-grotesk"] }}
               >
-                Explore {allCombos.length} Pairings
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/builder"
-                className="text-[13px] uppercase tracking-[0.12em] text-caption hover:text-foreground transition-colors hover-underline"
-              >
-                Build Custom
-              </Link>
+                Curated font combinations for designers who understand that typography
+                is not decoration. It&apos;s the voice of your design.
+              </p>
+              <div className="flex items-center gap-6 animate-slide-up delay-200">
+                <Link
+                  href="/explore"
+                  className="inline-flex items-center gap-3 text-[12px] uppercase tracking-[0.12em] bg-foreground text-background px-6 py-3.5 hover:opacity-90 transition-opacity rounded-full"
+                >
+                  Explore {allCombos.length} Pairings
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/builder"
+                  className="text-[12px] uppercase tracking-[0.12em] text-caption hover:text-foreground transition-colors hover-underline"
+                >
+                  Build Custom
+                </Link>
+              </div>
+            </div>
+
+            {/* Right - Preview Cards */}
+            <div className="hidden lg:block relative">
+              <div className="space-y-4">
+                {trendingCombos.slice(0, 3).map((combo, i) => (
+                  <Link
+                    key={combo.id}
+                    href={`/combo/${combo.slug}`}
+                    className="block p-6 bg-card border rounded-2xl hover:border-foreground/20 transition-all duration-300 animate-slide-up group"
+                    style={{ animationDelay: `${300 + i * 100}ms` }}
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[10px] uppercase tracking-wider text-caption">
+                        {combo.vibeTags[0]}
+                      </span>
+                      <ArrowRight className="h-3 w-3 text-caption group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <p
+                      className="text-2xl md:text-3xl leading-tight mb-2"
+                      style={{ fontFamily: fontIdToVariable[combo.hierarchy.h1.fontId] }}
+                    >
+                      {combo.name.split(" + ")[0]}
+                    </p>
+                    <p
+                      className="text-sm text-body"
+                      style={{ fontFamily: fontIdToVariable[combo.hierarchy.body.fontId] }}
+                    >
+                      Paired with {combo.secondaryFont.name}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+              {/* Decorative element */}
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-foreground/[0.02] to-transparent rounded-full blur-3xl" />
             </div>
           </div>
         </div>
         {/* Scroll indicator */}
-        <div className="pb-10 flex justify-center">
+        <div className="pb-8 flex justify-center">
           <ChevronDown className="h-5 w-5 text-caption/50 animate-bounce" />
         </div>
       </section>
