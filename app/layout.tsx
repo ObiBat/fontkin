@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Heart } from "lucide-react";
 import { fontVariables, spaceGrotesk } from "@/lib/fonts";
 import { fontIdToVariable } from "@/lib/fonts";
 import { Header } from "@/components/header";
+import { DonateButton } from "@/components/donate-button";
 import { ToastProvider } from "@/components/toast";
 import { AppStateProvider } from "@/contexts/app-state";
 import "./globals.css";
@@ -44,15 +44,7 @@ export default function RootLayout({
                           Fontkin is free to use. If it helps your work, consider buying me a coffee to keep the project alive.
                         </p>
                       </div>
-                      <a
-                        href="https://buymeacoffee.com/obicreative"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-full text-sm uppercase tracking-wider hover:opacity-90 transition-opacity shrink-0"
-                      >
-                        <Heart className="h-4 w-4" />
-                        Support This Project
-                      </a>
+                      <DonateButton variant="footer" />
                     </div>
                   </div>
 

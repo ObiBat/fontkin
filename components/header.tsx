@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, GitCompare, X, Wand2, Coffee } from "lucide-react";
+import { Heart, GitCompare, X, Wand2 } from "lucide-react";
+import { DonateButton } from "@/components/donate-button";
 import { fontIdToVariable } from "@/lib/fonts";
 import { useFavorites, useComparison } from "@/contexts/app-state";
 import { cn } from "@/lib/utils";
@@ -107,15 +108,7 @@ export function Header() {
                   )}
                 </AnimatePresence>
               </Link>
-              <a
-                href="https://buymeacoffee.com/obicreative"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-foreground text-background rounded-full text-[11px] uppercase tracking-wider hover:opacity-80 transition-opacity"
-              >
-                <Coffee className="h-3 w-3" />
-                <span>Donate</span>
-              </a>
+              <DonateButton variant="nav" />
             </div>
           </div>
         </nav>
