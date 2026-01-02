@@ -9,7 +9,7 @@ import { AppStateProvider } from "@/contexts/app-state";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Fontkin — Professional Font Pairing Lab",
+  title: "Fontkin | Professional Font Pairing Lab",
   description:
     "Stop guessing font pairings. Explore curated, professional combinations with real web + editorial previews, smart filters, and one-click developer + AI-friendly exports.",
   keywords: ["typography", "font pairing", "web fonts", "google fonts", "design system", "tailwind", "css", "fontkin"],
@@ -86,7 +86,7 @@ export default function RootLayout({
                     <div>
                       <p className="text-xs uppercase tracking-wider text-caption mb-4">Creator</p>
                       <p className="text-sm text-body leading-relaxed mb-4">
-                        Built by <span className="text-foreground font-medium">Obi Batbileg</span> — a designer & developer passionate about typography and crafting beautiful digital experiences.
+                        Built by <span className="text-foreground font-medium">Obi Batbileg</span>, a designer and developer passionate about typography and crafting beautiful digital experiences.
                       </p>
                       <div className="flex flex-wrap items-center gap-4 mb-4">
                         <a

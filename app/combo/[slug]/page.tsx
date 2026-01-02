@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: ComboPageProps) {
   const combo = getComboBySlug(slug);
   if (!combo) return { title: "Not Found" };
   return {
-    title: `${combo.name} — Fontkin`,
+    title: `${combo.name} | Fontkin`,
     description: combo.description,
   };
 }

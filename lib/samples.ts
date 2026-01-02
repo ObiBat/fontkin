@@ -15,7 +15,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "playfair-inter": {
     headline: "The Weight of Words",
     subhead: "On the delicate balance between elegance and clarity",
-    body: "Every letterform carries centuries of evolution. The high contrast of classical serifs meets the measured neutrality of contemporary sans—a dialogue between heritage and utility that defines modern editorial design.",
+    body: "Every letterform carries centuries of evolution. The high contrast of classical serifs meets the measured neutrality of contemporary sans. A dialogue between heritage and utility that defines modern editorial design.",
     pullQuote: "Typography is the craft of endowing human language with a durable visual form.",
     micro: "Robert Bringhurst",
   },
@@ -29,7 +29,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "crimson-pro-work-sans": {
     headline: "Renaissance Renewed",
     subhead: "Classical forms for modern screens",
-    body: "The humanist tradition lives on in digital form. Crimson Pro channels the elegance of old-style typefaces while embracing the technical demands of contemporary web design—heritage without nostalgia.",
+    body: "The humanist tradition lives on in digital form. Crimson Pro channels the elegance of old-style typefaces while embracing the technical demands of contemporary web design. Heritage without nostalgia.",
     pullQuote: "Study the past if you would define the future.",
     micro: "Confucius",
   },
@@ -50,7 +50,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "cormorant-dm-sans": {
     headline: "Refined Simplicity",
     subhead: "Where Garamond heritage meets geometric warmth",
-    body: "The old-style grace of Renaissance letterforms paired with friendly, approachable geometry. This combination speaks to brands that honor tradition while embracing accessibility—luxury without pretension.",
+    body: "The old-style grace of Renaissance letterforms paired with friendly, approachable geometry. This combination speaks to brands that honor tradition while embracing accessibility. Luxury without pretension.",
     pullQuote: "Elegance is not about being noticed, it's about being remembered.",
     micro: "Giorgio Armani",
   },
@@ -73,7 +73,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "plus-jakarta-inter": {
     headline: "Warm Precision",
     subhead: "The friendly face of modern software",
-    body: "Contemporary geometric warmth meets systematic clarity. Plus Jakarta Sans brings approachability to headlines without sacrificing professionalism—the typographic handshake of SaaS done right.",
+    body: "Contemporary geometric warmth meets systematic clarity. Plus Jakarta Sans brings approachability to headlines without sacrificing professionalism. The typographic handshake of SaaS done right.",
     pullQuote: "Simplicity is the ultimate sophistication.",
     micro: "Leonardo da Vinci",
   },
@@ -87,7 +87,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "outfit": {
     headline: "Clean Slate",
     subhead: "Geometry refined for screens",
-    body: "Pure geometric forms optimized for digital clarity. Outfit strips away historical baggage to deliver type that feels native to interfaces—designed for the way we read now.",
+    body: "Pure geometric forms optimized for digital clarity. Outfit strips away historical baggage to deliver type that feels native to interfaces. Designed for the way we read now.",
     pullQuote: "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away.",
     micro: "Antoine de Saint-Exupéry",
   },
@@ -96,7 +96,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "instrument-serif-inter": {
     headline: "Editorial Edge",
     subhead: "Contemporary serif for the digital age",
-    body: "Instrument Serif captures the current moment in editorial design—refined yet approachable, distinctive yet readable. Paired with Inter, it creates the sophisticated voice modern publications demand.",
+    body: "Instrument Serif captures the current moment in editorial design. Refined yet approachable, distinctive yet readable. Paired with Inter, it creates the sophisticated voice modern publications demand.",
     pullQuote: "Fashion fades, only style remains.",
     micro: "Coco Chanel",
   },
@@ -119,7 +119,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "fraunces-dm-sans": {
     headline: "Expressive Soul",
     subhead: "Personality that refuses to be ignored",
-    body: "Fraunces brings unapologetic character with its soft, 'wonky' forms—type that makes an instant impression. DM Sans provides the neutral counterweight, letting the headline personality shine.",
+    body: "Fraunces brings unapologetic character with its soft, 'wonky' forms. Type that makes an instant impression. DM Sans provides the neutral counterweight, letting the headline personality shine.",
     pullQuote: "Have no fear of perfection—you'll never reach it.",
     micro: "Salvador Dalí",
   },
@@ -142,7 +142,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "geist-mono-geist": {
     headline: "Next Generation",
     subhead: "The Vercel design language",
-    body: "Geist represents the future of interface typography—clean, neutral, and optimized for the modern web. Paired with monospace accents, it's the foundation for building what's next.",
+    body: "Geist represents the future of interface typography. Clean, neutral, and optimized for the modern web. Paired with monospace accents, it's the foundation for building what's next.",
     pullQuote: "Make it work, make it right, make it fast.",
     micro: "Kent Beck",
   },
@@ -179,7 +179,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "montserrat-karla": {
     headline: "Urban Energy",
     subhead: "Street-smart sophistication",
-    body: "Montserrat channels the spirit of Buenos Aires signage—bold, confident, unmistakable. Karla adds a touch of quirky charm to keep things interesting.",
+    body: "Montserrat channels the spirit of Buenos Aires signage. Bold, confident, unmistakable. Karla adds a touch of quirky charm to keep things interesting.",
     pullQuote: "The city is a jungle, but the jungle is full of opportunities.",
     micro: "Anonymous",
   },
@@ -195,7 +195,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "bebas-neue-inter": {
     headline: "MAXIMUM IMPACT",
     subhead: "Headlines that demand attention",
-    body: "Bebas Neue doesn't whisper—it declares. When your message can't wait, these all-caps letterforms cut through the noise. Inter keeps everything else readable.",
+    body: "Bebas Neue doesn't whisper, it declares. When your message can't wait, these all-caps letterforms cut through the noise. Inter keeps everything else readable.",
     pullQuote: "Speak softly but carry a big stick.",
     micro: "Theodore Roosevelt (inverted)",
   },
@@ -223,14 +223,14 @@ export const comboSamples: Record<string, ComboSample> = {
   "righteous-nunito": {
     headline: "Retro Future",
     subhead: "Yesterday's tomorrow, today",
-    body: "Righteous channels the optimism of mid-century futurism—space-age curves that still feel fresh. Nunito keeps the supporting text friendly and readable.",
+    body: "Righteous channels the optimism of mid-century futurism. Space-age curves that still feel fresh. Nunito keeps the supporting text friendly and readable.",
     pullQuote: "The future ain't what it used to be.",
     micro: "Yogi Berra",
   },
   "big-shoulders-work-sans": {
     headline: "Industrial Strength",
     subhead: "Built for the working class",
-    body: "Big Shoulders Display was designed for Chicago's signage—bold, proud, and built to work. Work Sans lives up to its name, handling body text with no-nonsense reliability.",
+    body: "Big Shoulders Display was designed for Chicago's signage. Bold, proud, and built to work. Work Sans lives up to its name, handling body text with no-nonsense reliability.",
     pullQuote: "Form follows function.",
     micro: "Louis Sullivan",
   },
@@ -253,7 +253,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "inter-only": {
     headline: "Interface Standard",
     subhead: "The typeface of the modern web",
-    body: "Inter was built for screens, designed for interfaces, and optimized for every size. It's become the default choice for a reason—reliable, readable, refined.",
+    body: "Inter was built for screens, designed for interfaces, and optimized for every size. It's become the default choice for a reason. Reliable, readable, refined.",
     pullQuote: "Good design is invisible.",
     micro: "Jared Spool",
   },
@@ -274,7 +274,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "lexend-only": {
     headline: "Read Better",
     subhead: "Typography designed for comprehension",
-    body: "Lexend was created with reading fluency research in mind. Its carefully calibrated letterforms reduce visual stress, making reading easier for everyone—not just those who struggle.",
+    body: "Lexend was created with reading fluency research in mind. Its carefully calibrated letterforms reduce visual stress, making reading easier for everyone. Not just those who struggle.",
     pullQuote: "Reading is to the mind what exercise is to the body.",
     micro: "Joseph Addison",
   },
@@ -290,7 +290,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "lexend-atkinson": {
     headline: "Inclusive Excellence",
     subhead: "Two fonts, one mission: readability",
-    body: "When reading fluency meets hyperlegibility, everyone benefits. This pairing prioritizes comprehension without compromising on visual appeal—proof that accessibility and aesthetics align.",
+    body: "When reading fluency meets hyperlegibility, everyone benefits. This pairing prioritizes comprehension without compromising on visual appeal. Proof that accessibility and aesthetics align.",
     pullQuote: "Good design enables, bad design disables.",
     micro: "Paul Hiebert",
   },
@@ -299,7 +299,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "cormorant-jost": {
     headline: "Haute Typography",
     subhead: "Where luxury meets modernity",
-    body: "Cormorant's delicate elegance speaks to the finer things, while Jost's geometric clarity keeps the message modern. This is the typography of aspiration—timeless yet contemporary.",
+    body: "Cormorant's delicate elegance speaks to the finer things, while Jost's geometric clarity keeps the message modern. This is the typography of aspiration. Timeless yet contemporary.",
     pullQuote: "Luxury must be comfortable, otherwise it is not luxury.",
     micro: "Coco Chanel",
   },
@@ -348,7 +348,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "literata-sora": {
     headline: "Optical Intelligence",
     subhead: "Variable fonts for variable screens",
-    body: "Literata adapts its optical size for perfect readability at any scale—a true variable font for the variable conditions of modern reading. Sora brings geometric modernity to the interface.",
+    body: "Literata adapts its optical size for perfect readability at any scale. A true variable font for the variable conditions of modern reading. Sora brings geometric modernity to the interface.",
     pullQuote: "The only constant is change.",
     micro: "Heraclitus",
   },
@@ -364,7 +364,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "cabinet-grotesk-spectral": {
     headline: "Defy Convention",
     subhead: "Where optical precision meets editorial soul",
-    body: "Cabinet Grotesk's variable optical sizing creates headlines that breathe at any scale. Spectral's screen-native elegance carries the narrative forward—a pairing for brands that refuse to play it safe.",
+    body: "Cabinet Grotesk's variable optical sizing creates headlines that breathe at any scale. Spectral's screen-native elegance carries the narrative forward. A pairing for brands that refuse to play it safe.",
     pullQuote: "Art is not what you see, but what you make others see.",
     micro: "Edgar Degas",
   },
@@ -378,14 +378,14 @@ export const comboSamples: Record<string, ComboSample> = {
   "sora-fraunces": {
     headline: "Playful Precision",
     subhead: "When algorithms learn to dance",
-    body: "Sora's calculated curves meet Fraunces' delightful wonkiness—a conversation between control and chaos. For brands that take their craft seriously but never themselves.",
+    body: "Sora's calculated curves meet Fraunces' delightful wonkiness. A conversation between control and chaos. For brands that take their craft seriously but never themselves.",
     pullQuote: "The creation of something new is not accomplished by the intellect but by the play instinct.",
     micro: "Carl Jung",
   },
   "outfit-eb-garamond": {
     headline: "Past Meets Pixel",
     subhead: "Five centuries compressed into one pairing",
-    body: "Outfit was born for screens; EB Garamond carries 500 years of typographic wisdom. Together, they prove that innovation and tradition aren't opposites—they're dance partners.",
+    body: "Outfit was born for screens; EB Garamond carries 500 years of typographic wisdom. Together, they prove that innovation and tradition aren't opposites. They're dance partners.",
     pullQuote: "In order to be irreplaceable, one must always be different.",
     micro: "Coco Chanel",
   },
@@ -399,7 +399,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "jost-instrument-serif": {
     headline: "Geometric Poetry",
     subhead: "Bauhaus philosophy meets modern editorial",
-    body: "Jost channels the spirit of Futura with contemporary refinement. Instrument Serif adds the editorial credibility that pure geometry can lack—functional idealism with emotional depth.",
+    body: "Jost channels the spirit of Futura with contemporary refinement. Instrument Serif adds the editorial credibility that pure geometry can lack. Functional idealism with emotional depth.",
     pullQuote: "Design is not a thing you do—it's a way you live.",
     micro: "Alan Fletcher",
   },
@@ -420,7 +420,7 @@ export const comboSamples: Record<string, ComboSample> = {
   "figtree-literata": {
     headline: "Comfort Zone",
     subhead: "Typography that feels like home",
-    body: "Figtree welcomes readers with warm, open forms while Literata—Google's ebook-optimized serif—makes long-form reading a pleasure. For platforms where people come to stay.",
+    body: "Figtree welcomes readers with warm, open forms while Literata, Google's ebook-optimized serif, makes long-form reading a pleasure. For platforms where people come to stay.",
     pullQuote: "The details are not the details. They make the design.",
     micro: "Charles Eames",
   },
