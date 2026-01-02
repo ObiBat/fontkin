@@ -56,7 +56,7 @@ export function ComboPreviewEditorial({ combo }: ComboPreviewEditorialProps) {
             lineHeight: hierarchy.body.lineHeight,
           })}
         >
-          Typography is the backbone of digital design. Every word, every letter, carries weight beyond its semantic meaning. The choices we make—the fonts, the sizes, the spacing—all contribute to an invisible architecture that guides users through content.
+          Typography is the backbone of digital design. Every word, every letter, carries weight beyond its semantic meaning. The choices we make, the fonts, the sizes, the spacing, all contribute to an invisible architecture that guides users through content.
         </p>
 
         {/* Pull quote */}
@@ -73,7 +73,7 @@ export function ComboPreviewEditorial({ combo }: ComboPreviewEditorialProps) {
             className="text-sm text-muted-foreground not-italic mt-2 block"
             style={getStyle(hierarchy.caption.fontId, 400)}
           >
-            — Ellen Lupton
+            Ellen Lupton
           </cite>
         </blockquote>
 

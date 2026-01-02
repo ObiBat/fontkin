@@ -466,7 +466,7 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
                         fontFamily: fontIdToVariable[hierarchy.caption.fontId],
                       }}
                     >
-                      — {sample.micro}
+                      {sample.micro}
                     </cite>
                   </blockquote>
                 )}

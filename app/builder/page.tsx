@@ -46,7 +46,7 @@ const sampleTexts: Record<HierarchyLevel, string> = {
   h1: "The Art of Typography",
   h2: "Finding the perfect pairing",
   h3: "Balance and harmony in design",
-  body: "Great typography is invisible—it seamlessly guides readers through content without calling attention to itself. The best font pairings create visual harmony while maintaining clear hierarchy.",
+  body: "Great typography is invisible. It seamlessly guides readers through content without calling attention to itself. The best font pairings create visual harmony while maintaining clear hierarchy.",
   caption: "Custom combination • Built with Fontkin",
 };
 

@@ -362,7 +362,7 @@ export default async function ComboPage({ params }: ComboPageProps) {
                         className="text-sm text-caption not-italic mt-4 block"
                         style={{ fontFamily: fontIdToVariable[hierarchy.caption.fontId] }}
                       >
-                        — {sample.micro}
+                        {sample.micro}
                       </cite>
                     </blockquote>
                   )}

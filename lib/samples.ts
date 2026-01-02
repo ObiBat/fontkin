@@ -120,7 +120,7 @@ export const comboSamples: Record<string, ComboSample> = {
     headline: "Expressive Soul",
     subhead: "Personality that refuses to be ignored",
     body: "Fraunces brings unapologetic character with its soft, 'wonky' forms. Type that makes an instant impression. DM Sans provides the neutral counterweight, letting the headline personality shine.",
-    pullQuote: "Have no fear of perfection—you'll never reach it.",
+    pullQuote: "Have no fear of perfection. You'll never reach it.",
     micro: "Salvador Dalí",
   },
 
@@ -400,7 +400,7 @@ export const comboSamples: Record<string, ComboSample> = {
     headline: "Geometric Poetry",
     subhead: "Bauhaus philosophy meets modern editorial",
     body: "Jost channels the spirit of Futura with contemporary refinement. Instrument Serif adds the editorial credibility that pure geometry can lack. Functional idealism with emotional depth.",
-    pullQuote: "Design is not a thing you do—it's a way you live.",
+    pullQuote: "Design is not a thing you do. It's a way you live.",
     micro: "Alan Fletcher",
   },
   "plus-jakarta-libre-baskerville": {

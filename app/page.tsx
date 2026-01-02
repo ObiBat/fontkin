@@ -108,7 +108,7 @@ export default function HomePage() {
               style={{ fontFamily: fontIdToVariable["space-grotesk"] }}
             >
               Curated font combinations for designers who understand that typography
-              is not decoration—it&apos;s the voice of your design.
+              is not decoration. It&apos;s the voice of your design.
             </p>
             <div className="flex items-center gap-8 animate-slide-up delay-200">
               <Link
