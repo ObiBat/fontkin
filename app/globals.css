@@ -1,0 +1,376 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background & Surface - Warm paper tones */
+    --background: 40 20% 99%;
+    --foreground: 0 0% 6%;
+
+    /* Card surfaces - Slight warmth */
+    --card: 40 15% 98%;
+    --card-foreground: 0 0% 6%;
+
+    /* Popover */
+    --popover: 40 20% 99%;
+    --popover-foreground: 0 0% 6%;
+
+    /* Primary action - Deep black */
+    --primary: 0 0% 6%;
+    --primary-foreground: 40 20% 99%;
+
+    /* Secondary/muted surfaces */
+    --secondary: 40 10% 96%;
+    --secondary-foreground: 0 0% 12%;
+
+    /* Muted */
+    --muted: 40 10% 96%;
+    --muted-foreground: 0 0% 38%;
+
+    /* Accent */
+    --accent: 40 10% 96%;
+    --accent-foreground: 0 0% 12%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders - Refined hairline */
+    --border: 0 0% 86%;
+    --input: 0 0% 86%;
+    --ring: 0 0% 6%;
+
+    --radius: 0.75rem;
+
+    /* === PREMIUM TYPOGRAPHY HIERARCHY === */
+    /* Level 1: Headlines - Deep ink black */
+    --text-primary: 0 0% 6%;
+
+    /* Level 2: Subheads - Rich dark */
+    --text-secondary: 0 0% 18%;
+
+    /* Level 3: Body text - Comfortable reading */
+    --text-body: 0 0% 28%;
+
+    /* Level 4: Captions & metadata */
+    --text-caption: 0 0% 42%;
+
+    /* Level 5: Decorative/labels */
+    --text-subtle: 0 0% 52%;
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 0 0% 96%;
+    --primary-foreground: 0 0% 6%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 12%;
+    --accent-foreground: 0 0% 90%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 85%;
+
+    --text-primary: 0 0% 96%;
+    --text-secondary: 0 0% 85%;
+    --text-body: 0 0% 75%;
+    --text-caption: 0 0% 60%;
+    --text-subtle: 0 0% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1, "kern" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Premium heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    letter-spacing: -0.02em;
+  }
+
+  /* Elegant link transitions */
+  a {
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* Refined button base */
+  button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* === READABLE TEXT UTILITIES === */
+@layer utilities {
+  /* Primary headlines - maximum impact */
+  .text-heading {
+    color: hsl(var(--text-primary));
+  }
+
+  /* Subheadings and important content */
+  .text-subhead {
+    color: hsl(var(--text-secondary));
+  }
+
+  /* Body text - optimized for reading */
+  .text-body {
+    color: hsl(var(--text-body));
+  }
+
+  /* Captions and metadata */
+  .text-caption {
+    color: hsl(var(--text-caption));
+  }
+
+  /* Subtle labels */
+  .text-subtle {
+    color: hsl(var(--text-subtle));
+  }
+
+  /* Text balance for headlines */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+  background-color: hsl(var(--foreground));
+  color: hsl(var(--background));
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--border)) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--border));
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Snap scroll behavior */
+.snap-y {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+.snap-mandatory {
+  scroll-snap-type: y mandatory;
+}
+
+/* === PREMIUM ANIMATIONS === */
+
+/* Elegant fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Subtle slide up */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dramatic clip reveal */
+@keyframes clipReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.animate-clip-reveal {
+  animation: clipReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Underline reveal */
+@keyframes underlineReveal {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+
+/* Premium hover underline effect */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Editorial divider */
+.editorial-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+}
+
+/* Premium card hover */
+.premium-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.1);
+}
+
+/* Newspaper column styling */
+.newspaper-columns {
+  column-gap: 2rem;
+  column-rule: 1px solid hsl(var(--border));
+}
+
+/* Drop cap for editorial feel */
+.drop-cap::first-letter {
+  float: left;
+  font-size: 3.5em;
+  line-height: 0.8;
+  padding-right: 0.1em;
+  font-weight: 600;
+}
+
+/* Premium shimmer effect for skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted-foreground) / 0.08) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Subtle pulse for interactive elements */
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 2s ease-in-out infinite;
+}
