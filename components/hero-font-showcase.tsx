@@ -113,16 +113,16 @@ export function HeroFontShowcase({ combos }: HeroFontShowcaseProps) {
               </motion.div>
 
               {/* Large heading showcase - word by word animation */}
-              <div className="mb-6 overflow-hidden">
+              <div className="mb-6">
                 <motion.p
-                  className="text-4xl md:text-5xl lg:text-6xl leading-[1] tracking-tight flex flex-wrap gap-x-[0.25em]"
+                  className="text-4xl md:text-5xl lg:text-6xl leading-[1.2] tracking-tight flex flex-wrap gap-x-[0.25em]"
                   style={{ fontFamily: headingFont }}
                 >
                   {words.map((word, i) => (
-                    <span key={`${currentCombo.id}-${i}`} className="overflow-hidden inline-block">
+                    <span key={`${currentCombo.id}-${i}`} className="overflow-hidden inline-block pb-[0.1em]">
                       <motion.span
                         className="inline-block"
-                        initial={{ y: "100%", opacity: 0 }}
+                        initial={{ y: "110%", opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{
                           delay: 0.2 + i * 0.08,
