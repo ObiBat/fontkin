@@ -62,7 +62,7 @@ export function HeroTypographyTheater({ combos, totalCombos }: HeroTypographyThe
 
       {/* Main content */}
       <div
-        className="flex-1 flex flex-col items-center justify-center px-6 relative z-10"
+        className="flex-1 flex flex-col items-center justify-center px-6 pt-20 md:pt-28 relative z-10"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
@@ -101,10 +101,28 @@ export function HeroTypographyTheater({ combos, totalCombos }: HeroTypographyThe
             </motion.div>
           </AnimatePresence>
 
+          {/* Play/Pause button - between typography and bottom */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="mt-12 md:mt-16"
+          >
+            <button
+              onClick={() => setIsPaused(!isPaused)}
+              className="p-3 rounded-full border border-foreground/20 hover:border-foreground/40 transition-all hover:bg-foreground/5"
+            >
+              {isPaused ? (
+                <Play className="h-4 w-4 text-body" />
+              ) : (
+                <Pause className="h-4 w-4 text-body" />
+              )}
+            </button>
+          </motion.div>
         </div>
       </div>
 
-      {/* Controls section - centered between content and footer */}
+      {/* Bottom controls - font name and dots */}
       <div className="relative z-10 w-full flex justify-center pb-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -112,20 +130,8 @@ export function HeroTypographyTheater({ combos, totalCombos }: HeroTypographyThe
           transition={{ delay: 0.5, duration: 0.6 }}
           className="flex flex-col items-center"
         >
-          {/* Play/Pause button */}
-          <button
-            onClick={() => setIsPaused(!isPaused)}
-            className="p-3 rounded-full border border-foreground/20 hover:border-foreground/40 transition-all hover:bg-foreground/5"
-          >
-            {isPaused ? (
-              <Play className="h-4 w-4 text-body" />
-            ) : (
-              <Pause className="h-4 w-4 text-body" />
-            )}
-          </button>
-
           {/* Current font pairing name */}
-          <p className="mt-6 text-[11px] uppercase tracking-[0.15em] text-caption">
+          <p className="text-[11px] uppercase tracking-[0.15em] text-caption">
             {currentCombo.primaryFont.name}
             {currentCombo.primaryFont.id !== currentCombo.secondaryFont.id &&
               ` + ${currentCombo.secondaryFont.name}`
@@ -133,7 +139,7 @@ export function HeroTypographyTheater({ combos, totalCombos }: HeroTypographyThe
           </p>
 
           {/* Combo indicator dots */}
-          <div className="mt-5 flex items-center gap-3">
+          <div className="mt-4 flex items-center gap-3">
             {combos.map((_, idx) => (
               <button
                 key={idx}

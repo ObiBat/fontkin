@@ -92,8 +92,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
+        {/* Force scroll to top on page load */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if (history.scrollRestoration) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0);`,
+          }}
+        />
         {/* Structured Data for SEO */}
         <WebsiteSchema />
         <OrganizationSchema />

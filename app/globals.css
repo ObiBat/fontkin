@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force scroll to top on page load */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @layer base {
   :root {
     /* Background & Surface - Professional cool off-white */
