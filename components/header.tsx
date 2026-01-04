@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, GitCompare, X, Wand2, Menu } from "lucide-react";
+import { Heart, GitCompare, X, SlidersHorizontal, Menu, Compass } from "lucide-react";
 import { DonateButton } from "@/components/donate-button";
 import { fontIdToVariable } from "@/lib/fonts";
 import { useFavorites, useComparison } from "@/contexts/app-state";
@@ -21,8 +21,8 @@ export function Header() {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   const navLinks = [
-    { href: "/explore", label: "Explore", icon: null },
-    { href: "/builder", label: "Builder", icon: Wand2 },
+    { href: "/explore", label: "Explore", icon: Compass },
+    { href: "/builder", label: "Builder", icon: SlidersHorizontal },
     { href: "/favorites", label: "Favorites", icon: Heart, count: favoritesCount },
     { href: "/compare", label: "Compare", icon: GitCompare, count: compareCount },
   ];
@@ -49,7 +49,6 @@ export function Header() {
                   href={href}
                   className={cn(
                     "text-[13px] uppercase tracking-[0.08em] transition-colors flex items-center gap-2 relative",
-                    href === "/explore" ? "hover-underline" : "",
                     isActive(href) ? "text-foreground" : "text-caption hover:text-foreground"
                   )}
                 >
@@ -62,7 +61,7 @@ export function Header() {
                       <Icon className={cn("h-3.5 w-3.5", count && count > 0 && "fill-foreground text-foreground")} />
                     </motion.div>
                   )}
-                  <span className={Icon ? "hidden sm:inline" : ""}>{label}</span>
+                  <span className="hidden sm:inline">{label}</span>
                   <AnimatePresence mode="popLayout">
                     {count !== undefined && count > 0 && (
                       <motion.span

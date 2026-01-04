@@ -8,6 +8,7 @@ import { FilterState } from "@/lib/types";
 import { defaultFilterState, filterCombos } from "@/lib/filters";
 import { FilterSidebar } from "@/components/filter-sidebar";
 import { ComboCard } from "@/components/combo-card";
+import { CustomTextInput, CustomTextBadge } from "@/components/custom-text-input";
 import { fontIdToVariable } from "@/lib/fonts";
 import { PageTransition } from "@/components/page-transition";
 import { cn } from "@/lib/utils";
@@ -34,7 +35,7 @@ export default function ExplorePage() {
 
   return (
     <PageTransition>
-      <div className="min-h-[calc(100vh-5rem)] lg:h-[calc(100vh-5rem)] flex flex-col">
+      <div className="min-h-[calc(100vh-5rem)] lg:h-[calc(100vh-5rem)] flex flex-col overflow-x-hidden">
         {/* Compact Header */}
         <div className="border-b shrink-0">
           <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-12 lg:px-20 py-4 sm:py-6 md:py-8">
@@ -58,6 +59,8 @@ export default function ExplorePage() {
                 </motion.p>
               </div>
               <div className="flex items-center gap-2 sm:gap-3">
+                {/* Custom text input */}
+                <CustomTextInput variant="inline" />
                 {/* Mobile filter button */}
                 <motion.button
                   initial={{ opacity: 0 }}

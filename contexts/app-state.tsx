@@ -13,7 +13,21 @@ import {
 // Storage keys
 const FAVORITES_KEY = "fontkin-favorites";
 const COMPARE_KEY = "fontkin-compare";
+const CUSTOM_TEXT_KEY = "fontkin-custom-text";
 const MAX_COMPARE_ITEMS = 3;
+
+// Custom text structure
+export interface CustomTextFields {
+  headline: string;
+  subhead: string;
+  body: string;
+}
+
+const EMPTY_CUSTOM_TEXT: CustomTextFields = {
+  headline: "",
+  subhead: "",
+  body: "",
+};
 
 interface AppStateContextValue {
   // Favorites
@@ -35,6 +49,13 @@ interface AppStateContextValue {
   compareCount: number;
   canAddMore: boolean;
 
+  // Custom text preview
+  customText: CustomTextFields;
+  setCustomText: (field: keyof CustomTextFields, text: string) => void;
+  setAllCustomText: (texts: Partial<CustomTextFields>) => void;
+  clearCustomText: () => void;
+  hasCustomText: boolean;
+
   // Hydration state
   isHydrated: boolean;
 }
@@ -44,6 +65,7 @@ const AppStateContext = createContext<AppStateContextValue | null>(null);
 export function AppStateProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [compareIds, setCompareIds] = useState<string[]>([]);
+  const [customText, setCustomTextState] = useState<CustomTextFields>(EMPTY_CUSTOM_TEXT);
   const [isHydrated, setIsHydrated] = useState(false);
 
   // Hydrate from localStorage on mount
@@ -51,12 +73,27 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     try {
       const storedFavorites = window.localStorage.getItem(FAVORITES_KEY);
       const storedCompare = window.localStorage.getItem(COMPARE_KEY);
+      const storedCustomText = window.localStorage.getItem(CUSTOM_TEXT_KEY);
 
       if (storedFavorites) {
         setFavorites(JSON.parse(storedFavorites));
       }
       if (storedCompare) {
         setCompareIds(JSON.parse(storedCompare));
+      }
+      if (storedCustomText) {
+        try {
+          const parsed = JSON.parse(storedCustomText);
+          // Handle both old string format and new object format
+          if (typeof parsed === 'string') {
+            setCustomTextState({ headline: parsed, subhead: "", body: parsed });
+          } else {
+            setCustomTextState({ ...EMPTY_CUSTOM_TEXT, ...parsed });
+          }
+        } catch {
+          // Old format was just a string
+          setCustomTextState({ headline: storedCustomText, subhead: "", body: storedCustomText });
+        }
       }
     } catch (error) {
       console.warn("Error reading from localStorage:", error);
@@ -83,6 +120,44 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       console.warn("Error saving compare:", error);
     }
   }, [compareIds, isHydrated]);
+
+  // Persist custom text to localStorage
+  useEffect(() => {
+    if (!isHydrated) return;
+    try {
+      const hasAnyText = customText.headline || customText.subhead || customText.body;
+      if (hasAnyText) {
+        window.localStorage.setItem(CUSTOM_TEXT_KEY, JSON.stringify(customText));
+      } else {
+        window.localStorage.removeItem(CUSTOM_TEXT_KEY);
+      }
+    } catch (error) {
+      console.warn("Error saving custom text:", error);
+    }
+  }, [customText, isHydrated]);
+
+  // === CUSTOM TEXT ===
+  const setCustomText = useCallback((field: keyof CustomTextFields, text: string) => {
+    setCustomTextState(prev => ({
+      ...prev,
+      [field]: text.slice(0, 200) // Limit to 200 chars per field
+    }));
+  }, []);
+
+  const setAllCustomText = useCallback((texts: Partial<CustomTextFields>) => {
+    setCustomTextState(prev => ({
+      ...prev,
+      headline: texts.headline?.slice(0, 200) ?? prev.headline,
+      subhead: texts.subhead?.slice(0, 200) ?? prev.subhead,
+      body: texts.body?.slice(0, 200) ?? prev.body,
+    }));
+  }, []);
+
+  const clearCustomText = useCallback(() => {
+    setCustomTextState(EMPTY_CUSTOM_TEXT);
+  }, []);
+
+  const hasCustomText = !!(customText.headline.trim() || customText.subhead.trim() || customText.body.trim());
 
   // === FAVORITES ===
   const isFavorite = useCallback(
@@ -219,6 +294,13 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       compareCount,
       canAddMore,
 
+      // Custom text
+      customText,
+      setCustomText,
+      setAllCustomText,
+      clearCustomText,
+      hasCustomText,
+
       // Hydration
       isHydrated,
     }),
@@ -238,6 +320,11 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       clearCompare,
       compareCount,
       canAddMore,
+      customText,
+      setCustomText,
+      setAllCustomText,
+      clearCustomText,
+      hasCustomText,
       isHydrated,
     ]
   );
@@ -310,4 +397,9 @@ export function useComparison() {
     // New: get result with added status
     toggleCompareWithResult: toggleCompare,
   };
+}
+
+export function useCustomText() {
+  const { customText, setCustomText, setAllCustomText, clearCustomText, hasCustomText } = useAppState();
+  return { customText, setCustomText, setAllCustomText, clearCustomText, hasCustomText };
 }

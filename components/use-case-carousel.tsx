@@ -117,7 +117,7 @@ export function UseCaseCarousel({ categories }: UseCaseCarouselProps) {
                 </div>
                 <div className="space-y-4 py-2">
                   {category.combos.slice(0, 2).map((combo) => (
-                    <ComboCard key={combo.id} combo={combo} variant="compact" />
+                    <ComboCard key={combo.id} combo={combo} variant="compact" from="home" />
                   ))}
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { fontVariables, spaceGrotesk } from "@/lib/fonts";
 import { fontIdToVariable } from "@/lib/fonts";
@@ -6,13 +6,84 @@ import { Header } from "@/components/header";
 import { DonateButton } from "@/components/donate-button";
 import { ToastProvider } from "@/components/toast";
 import { AppStateProvider } from "@/contexts/app-state";
+import { Analytics } from "@/components/analytics";
+import {
+  WebsiteSchema,
+  OrganizationSchema,
+  SoftwareApplicationSchema,
+  FAQSchema,
+} from "@/components/structured-data";
 import "./globals.css";
 
+// Viewport configuration for mobile optimization
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F7F7F5" },
+    { media: "(prefers-color-scheme: dark)", color: "#0F0F0F" },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: "Fontkin | Professional Font Pairing Lab",
+  title: {
+    default: "Fontkin | Professional Font Pairing Lab",
+    template: "%s | Fontkin",
+  },
   description:
     "Stop guessing font pairings. Explore curated, professional combinations with real web + editorial previews, smart filters, and one-click developer + AI-friendly exports.",
-  keywords: ["typography", "font pairing", "web fonts", "google fonts", "design system", "tailwind", "css", "fontkin"],
+  keywords: [
+    "typography",
+    "font pairing",
+    "web fonts",
+    "google fonts",
+    "design system",
+    "tailwind",
+    "css",
+    "fontkin",
+    "font combinations",
+    "type pairing",
+    "web typography",
+    "ui fonts",
+  ],
+  metadataBase: new URL("https://fontkin.com"),
+  alternates: {
+    canonical: "https://fontkin.com",
+  },
+  openGraph: {
+    title: "Fontkin | Professional Font Pairing Lab",
+    description: "Stop guessing font pairings. Explore curated, professional combinations with real previews and one-click exports.",
+    url: "https://fontkin.com",
+    siteName: "Fontkin",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fontkin | Professional Font Pairing Lab",
+    description: "Stop guessing font pairings. Explore curated, professional combinations with real previews and one-click exports.",
+    creator: "@obibatbileg",
+    site: "@obibatbileg",
+  },
+  authors: [{ name: "Obi Batbileg", url: "https://obicreative.dev" }],
+  creator: "Obi Batbileg",
+  publisher: "Fontkin",
+  category: "Design Tools",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "I2FmlCM9-12uCHuOi9aMrCnNFzvwTH8xLCwk5jMVBBY",
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +93,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Structured Data for SEO */}
+        <WebsiteSchema />
+        <OrganizationSchema />
+        <SoftwareApplicationSchema />
+        <FAQSchema />
+
+        {/* Preconnect to Google Fonts for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* DNS Prefetch for analytics */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+      </head>
       <body className={`${fontVariables} ${spaceGrotesk.className} antialiased`}>
+        {/* Analytics - loads after page interactive */}
+        <Analytics />
+
         <ToastProvider>
           <AppStateProvider>
             <div className="min-h-screen flex flex-col">
@@ -95,7 +184,7 @@ export default function RootLayout({
                           rel="noopener noreferrer"
                           className="text-[10px] sm:text-xs uppercase tracking-wider text-caption hover:text-foreground transition-colors py-1"
                         >
-                          Portfolio →
+                          → Portfolio
                         </a>
                         <a
                           href="https://x.com/obibatbileg"

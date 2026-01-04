@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   getAllResolvedCombos,
   getCombosByTimelessness,
@@ -7,7 +7,7 @@ import {
 } from "@/lib/data/combos";
 import { ComboCard, ComboHeroCard } from "@/components/combo-card";
 import { UseCaseCarousel } from "@/components/use-case-carousel";
-import { HeroFontShowcase } from "@/components/hero-font-showcase";
+import { HeroTypographyTheater } from "@/components/hero-typography-theater";
 import { fontIdToVariable } from "@/lib/fonts";
 
 export default function HomePage() {
@@ -91,66 +91,8 @@ export default function HomePage() {
 
   return (
     <div className="scroll-smooth">
-      {/* Hero Section - Full Viewport */}
-      <section className="snap-start min-h-[calc(100vh-4rem)] flex flex-col">
-        <div className="flex-1 flex items-center max-w-[1600px] mx-auto w-full px-4 sm:px-6 md:px-12 lg:px-20 py-8 md:py-12">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center w-full">
-            {/* Left - Content */}
-            <div className="text-center lg:text-left">
-              <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] sm:tracking-[0.25em] text-caption mb-6 md:mb-8 animate-fade-in">
-                The Professional Font Pairing Lab
-              </p>
-              <h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[0.9] md:leading-[0.85] mb-6 md:mb-8"
-                style={{ fontFamily: fontIdToVariable["anton"] }}
-              >
-                <span className="block overflow-hidden">
-                  <span className="block animate-slide-up [animation-duration:0.7s]">TYPOGRAPHY</span>
-                </span>
-                <span className="block overflow-hidden">
-                  <span className="block text-caption/50 text-[0.6em] sm:text-[0.65em] tracking-[0.1em] sm:tracking-[0.15em] animate-slide-up [animation-duration:0.7s] delay-100">THAT SPEAKS</span>
-                </span>
-                <span className="block overflow-hidden mt-1">
-                  <span className="block animate-slide-up [animation-duration:0.7s] delay-200">
-                    <span className="bg-foreground text-background px-3 sm:px-4 py-1 inline-block animate-clip-reveal delay-400">VOLUMES</span>
-                  </span>
-                </span>
-              </h1>
-              <p
-                className="text-sm sm:text-base md:text-lg text-body max-w-md mx-auto lg:mx-0 leading-[1.6] md:leading-[1.7] mb-8 md:mb-10 animate-slide-up delay-300"
-                style={{ fontFamily: fontIdToVariable["space-grotesk"] }}
-              >
-                Curated font combinations for designers who understand that typography
-                is not decoration. It&apos;s the voice of your design.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 animate-slide-up delay-200">
-                <Link
-                  href="/explore"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-3 text-[12px] uppercase tracking-[0.12em] bg-foreground text-background px-6 py-4 sm:py-3.5 hover:opacity-90 transition-opacity rounded-full active:scale-[0.98]"
-                >
-                  Explore {allCombos.length} Pairings
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/builder"
-                  className="text-[12px] uppercase tracking-[0.12em] text-caption hover:text-foreground transition-colors hover-underline py-2"
-                >
-                  Build Custom
-                </Link>
-              </div>
-            </div>
-
-            {/* Right - Animated Font Showcase */}
-            <div className="hidden lg:block">
-              <HeroFontShowcase combos={showcaseCombos} />
-            </div>
-          </div>
-        </div>
-        {/* Scroll indicator */}
-        <div className="pb-6 md:pb-8 flex justify-center">
-          <ChevronDown className="h-5 w-5 text-caption/50 animate-bounce" />
-        </div>
-      </section>
+      {/* Hero Section - Full Viewport Typography Theater */}
+      <HeroTypographyTheater combos={showcaseCombos} totalCombos={allCombos.length} />
 
       {/* Featured Section - Full Viewport */}
       <section className="snap-start min-h-[calc(100vh-4rem)] flex flex-col border-t">
@@ -168,7 +110,7 @@ export default function HomePage() {
           </div>
           <div className="flex-1 flex items-center">
             <div className="w-full">
-              <ComboHeroCard combo={featuredCombo} />
+              <ComboHeroCard combo={featuredCombo} from="home" />
             </div>
           </div>
         </div>
@@ -202,7 +144,7 @@ export default function HomePage() {
           <div className="flex-1 flex items-center">
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 w-full">
               {timelessCombos.slice(0, 3).map((combo) => (
-                <ComboCard key={combo.id} combo={combo} />
+                <ComboCard key={combo.id} combo={combo} from="home" />
               ))}
             </div>
           </div>
@@ -237,7 +179,7 @@ export default function HomePage() {
           <div className="flex-1 flex items-center">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 w-full">
               {trendingCombos.slice(0, 4).map((combo) => (
-                <ComboCard key={combo.id} combo={combo} />
+                <ComboCard key={combo.id} combo={combo} from="home" />
               ))}
             </div>
           </div>

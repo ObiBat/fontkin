@@ -6,7 +6,7 @@ import { Heart, GitCompare } from "lucide-react";
 import { ResolvedFontCombo } from "@/lib/types";
 import { fontIdToVariable } from "@/lib/fonts";
 import { getSampleForCombo } from "@/lib/samples";
-import { useFavorites, useComparison } from "@/contexts/app-state";
+import { useFavorites, useComparison, useCustomText } from "@/contexts/app-state";
 import { useToast } from "@/components/toast";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ interface ComboCardProps {
   combo: ResolvedFontCombo;
   variant?: "default" | "featured" | "compact";
   index?: number; // For staggered animations
+  from?: "home" | "explore"; // For back navigation context
 }
 
 // Premium animation variants
@@ -39,12 +40,20 @@ const heartVariants = {
   },
 };
 
-export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardProps) {
+export function ComboCard({ combo, variant = "default", index = 0, from }: ComboCardProps) {
   const { hierarchy, primaryFont, secondaryFont } = combo;
   const sample = getSampleForCombo(combo.id);
   const { isFavorite, toggleFavoriteWithResult, favoritesCount } = useFavorites();
   const { isInCompare, toggleCompareWithResult, canAddMore, compareCount } = useComparison();
+  const { customText, hasCustomText } = useCustomText();
   const { showFavoriteAdded, showFavoriteRemoved, showCompareAdded, showCompareRemoved, showCompareFull, showMilestone } = useToast();
+
+  const comboHref = from ? `/combo/${combo.slug}?from=${from}` : `/combo/${combo.slug}`;
+
+  // Use custom text if available, otherwise use curated sample
+  const displayHeadline = customText.headline || sample.headline;
+  const displaySubhead = customText.subhead || sample.subhead;
+  const displayBody = customText.body || sample.body;
 
   const isFav = isFavorite(combo.id);
   const isComparing = isInCompare(combo.id);
@@ -154,7 +163,7 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
         animate="visible"
         custom={index}
       >
-        <Link href={`/combo/${combo.slug}`} className="group block">
+        <Link href={comboHref} className="group block">
           <motion.article
             className="relative overflow-hidden bg-card border border-border hover:border-foreground/30 transition-colors duration-300 rounded-2xl"
             whileHover={{ scale: 1.005 }}
@@ -171,19 +180,21 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
                 className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-balance"
                 style={headingStyle}
               >
-                {sample.headline}
+                {displayHeadline}
               </h2>
-              <p
-                className="text-xl md:text-2xl text-subhead max-w-xl"
-                style={subheadStyle}
-              >
-                {sample.subhead}
-              </p>
+              {displaySubhead && (
+                <p
+                  className="text-xl md:text-2xl text-subhead max-w-xl"
+                  style={subheadStyle}
+                >
+                  {displaySubhead}
+                </p>
+              )}
               <p
                 className="text-base md:text-lg text-body max-w-2xl leading-relaxed"
                 style={bodyStyle}
               >
-                {sample.body}
+                {displayBody}
               </p>
             </div>
 
@@ -232,7 +243,7 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
         animate="visible"
         custom={index}
       >
-        <Link href={`/combo/${combo.slug}`} className="group block">
+        <Link href={comboHref} className="group block">
           <motion.article
             className="p-5 border border-border hover:border-foreground/30 bg-card transition-colors duration-300 relative rounded-xl"
             whileHover={{ scale: 1.01 }}
@@ -247,13 +258,13 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
               className="text-xl mb-2 tracking-tight pr-16"
               style={headingStyle}
             >
-              {sample.headline}
+              {displayHeadline}
             </h3>
             <p
               className="text-sm text-body line-clamp-2"
               style={bodyStyle}
             >
-              {sample.subhead}
+              {customText.subhead || sample.subhead}
             </p>
             <div className="mt-4 pt-3 border-t flex items-center justify-between">
               <span className="text-xs font-medium text-subhead">{combo.name}</span>
@@ -281,7 +292,7 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
       custom={index}
       className="h-full"
     >
-      <Link href={`/combo/${combo.slug}`} className="group block h-full">
+      <Link href={comboHref} className="group block h-full">
         <motion.article
           className="h-full flex flex-col border border-border bg-card overflow-hidden relative rounded-xl sm:rounded-2xl"
           whileHover={{ y: -3 }}
@@ -311,23 +322,25 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
               className="text-lg sm:text-xl md:text-[1.85rem] leading-[1.15] tracking-tight mb-2 sm:mb-4 text-balance pr-8 sm:pr-10"
               style={headingStyle}
             >
-              {sample.headline}
+              {displayHeadline}
             </h3>
 
-            {/* Subhead - hidden on very small screens */}
-            <p
-              className="hidden sm:block text-[14px] md:text-[15px] text-subhead mb-3 md:mb-4 leading-relaxed"
-              style={subheadStyle}
-            >
-              {sample.subhead}
-            </p>
+            {/* Subhead - hidden on very small screens or when using custom text */}
+            {displaySubhead && (
+              <p
+                className="hidden sm:block text-[14px] md:text-[15px] text-subhead mb-3 md:mb-4 leading-relaxed"
+                style={subheadStyle}
+              >
+                {displaySubhead}
+              </p>
+            )}
 
             {/* Body sample */}
             <p
               className="text-[12px] sm:text-[13px] text-body line-clamp-2 sm:line-clamp-3 flex-1 leading-relaxed"
               style={bodyStyle}
             >
-              {sample.body}
+              {displayBody}
             </p>
           </div>
 
@@ -360,13 +373,20 @@ export function ComboCard({ combo, variant = "default", index = 0 }: ComboCardPr
 }
 
 // Large editorial specimen for home page hero
-export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
+export function ComboHeroCard({ combo, from }: { combo: ResolvedFontCombo; from?: "home" | "explore" }) {
   const { hierarchy, primaryFont, secondaryFont } = combo;
   const sample = getSampleForCombo(combo.id);
   const { isFavorite, toggleFavoriteWithResult } = useFavorites();
+  const { customText, hasCustomText } = useCustomText();
   const { showFavoriteAdded, showFavoriteRemoved, showMilestone } = useToast();
 
   const isFav = isFavorite(combo.id);
+  const comboHref = from ? `/combo/${combo.slug}?from=${from}` : `/combo/${combo.slug}`;
+
+  // Use custom text if available
+  const displayHeadline = customText.headline || sample.headline;
+  const displaySubhead = customText.subhead || sample.subhead;
+  const displayBody = customText.body || sample.body;
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -389,7 +409,7 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <Link href={`/combo/${combo.slug}`} className="group block">
+      <Link href={comboHref} className="group block">
         <motion.article
           className="relative border border-border hover:border-foreground/30 transition-colors duration-500 overflow-hidden rounded-xl sm:rounded-2xl"
           whileHover={{ scale: 1.002 }}
@@ -421,18 +441,20 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
                   letterSpacing: hierarchy.h1.letterSpacing,
                 }}
               >
-                {sample.headline}
+                {displayHeadline}
               </h2>
-              <p
-                className="text-base sm:text-lg md:text-xl lg:text-2xl text-subhead max-w-md"
-                style={{
-                  fontFamily: fontIdToVariable[hierarchy.h2.fontId],
-                  fontWeight: hierarchy.h2.weight,
-                  lineHeight: 1.4,
-                }}
-              >
-                {sample.subhead}
-              </p>
+              {displaySubhead && (
+                <p
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl text-subhead max-w-md"
+                  style={{
+                    fontFamily: fontIdToVariable[hierarchy.h2.fontId],
+                    fontWeight: hierarchy.h2.weight,
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {displaySubhead}
+                </p>
+              )}
             </div>
 
             {/* Right: Body specimen + meta */}
@@ -446,7 +468,7 @@ export function ComboHeroCard({ combo }: { combo: ResolvedFontCombo }) {
                     lineHeight: hierarchy.body.lineHeight,
                   }}
                 >
-                  {sample.body}
+                  {displayBody}
                 </p>
 
                 {sample.pullQuote && (
