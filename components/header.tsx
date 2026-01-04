@@ -48,7 +48,7 @@ export function Header() {
                   key={href}
                   href={href}
                   className={cn(
-                    "text-[13px] uppercase tracking-[0.08em] transition-colors flex items-center gap-2 relative",
+                    "text-[13px] uppercase tracking-[0.08em] transition-colors flex items-center gap-2 relative group",
                     isActive(href) ? "text-foreground" : "text-caption hover:text-foreground"
                   )}
                 >
@@ -76,6 +76,13 @@ export function Header() {
                       </motion.span>
                     )}
                   </AnimatePresence>
+                  {/* Animated underline */}
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-[1px] bg-current transition-all duration-300 ease-out",
+                      isActive(href) ? "w-full" : "w-0 group-hover:w-full"
+                    )}
+                  />
                 </Link>
               ))}
               <DonateButton variant="nav" />
