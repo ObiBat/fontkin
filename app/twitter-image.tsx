@@ -10,6 +10,11 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
+  // Fetch Anton font from Google Fonts
+  const antonFont = await fetch(
+    new URL("https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0K08i4gS7lu.woff2")
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -21,65 +26,54 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "60px",
         }}
       >
-        {/* Logo Mark */}
+        {/* Wordmark Logo - matches UI exactly */}
         <div
           style={{
-            width: "100px",
-            height: "100px",
-            background: "#FAFAF9",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "30px",
-            borderRadius: "16px",
+            gap: "24px",
           }}
         >
           <span
             style={{
-              fontSize: "72px",
-              fontWeight: 900,
-              color: "#0F0F0F",
-              fontFamily: "Arial Black, sans-serif",
+              fontSize: "120px",
+              color: "#FAFAF9",
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+              fontFamily: "Anton",
             }}
           >
-            F
+            Fontkin
           </span>
-        </div>
 
-        {/* Brand Name */}
-        <span
-          style={{
-            fontSize: "64px",
-            fontWeight: 900,
-            color: "#FAFAF9",
-            letterSpacing: "0.05em",
-            textTransform: "uppercase",
-            fontFamily: "Arial Black, sans-serif",
-            marginBottom: "20px",
-          }}
-        >
-          Fontkin
-        </span>
-
-        {/* Tagline */}
-        <div
-          style={{
-            fontSize: "24px",
-            color: "#A0A0A0",
-            textTransform: "uppercase",
-            letterSpacing: "0.25em",
-            fontFamily: "Arial, sans-serif",
-          }}
-        >
-          Professional Font Pairing Lab
+          {/* Minimal tagline */}
+          <span
+            style={{
+              fontSize: "18px",
+              color: "#666666",
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              fontFamily: "system-ui, sans-serif",
+            }}
+          >
+            Font Pairing Lab
+          </span>
         </div>
       </div>
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "Anton",
+          data: antonFont,
+          style: "normal",
+          weight: 400,
+        },
+      ],
     }
   );
 }
