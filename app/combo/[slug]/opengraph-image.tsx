@@ -14,6 +14,20 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const { slug } = await params;
   const combo = getComboBySlug(slug);
 
+  // Fetch Anton font from Google Fonts
+  const antonFont = await fetch(
+    new URL("https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0K08i4gS7lu.woff2")
+  ).then((res) => res.arrayBuffer());
+
+  const fonts = [
+    {
+      name: "Anton",
+      data: antonFont,
+      style: "normal" as const,
+      weight: 400 as const,
+    },
+  ];
+
   if (!combo) {
     return new ImageResponse(
       (
@@ -23,16 +37,34 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             width: "100%",
             height: "100%",
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            color: "#FAFAF9",
-            fontSize: 48,
           }}
         >
-          Font Pairing Not Found
+          <span
+            style={{
+              fontSize: "64px",
+              color: "#FAFAF9",
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+              fontFamily: "Anton",
+            }}
+          >
+            Fontkin
+          </span>
+          <span
+            style={{
+              fontSize: "24px",
+              color: "#666666",
+              marginTop: "24px",
+            }}
+          >
+            Font Pairing Not Found
+          </span>
         </div>
       ),
-      { ...size }
+      { ...size, fonts }
     );
   }
 
@@ -42,7 +74,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     (
       <div
         style={{
-          background: "#FAFAF9",
+          background: "#0F0F0F",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -50,22 +82,22 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           padding: "60px 80px",
         }}
       >
-        {/* Header */}
+        {/* Header - Fontkin branding */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginBottom: "40px",
+            marginBottom: "60px",
           }}
         >
           <span
             style={{
-              fontSize: "20px",
-              fontWeight: 900,
-              color: "#0F0F0F",
-              letterSpacing: "0.1em",
+              fontSize: "28px",
+              color: "#FAFAF9",
+              letterSpacing: "0.04em",
               textTransform: "uppercase",
+              fontFamily: "Anton",
             }}
           >
             Fontkin
@@ -73,9 +105,10 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           <span
             style={{
               fontSize: "14px",
-              color: "#666",
+              color: "#666666",
               textTransform: "uppercase",
-              letterSpacing: "0.15em",
+              letterSpacing: "0.2em",
+              fontFamily: "system-ui, sans-serif",
             }}
           >
             Font Pairing
@@ -93,34 +126,25 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         >
           <div
             style={{
-              fontSize: "72px",
+              fontSize: "64px",
               fontWeight: 600,
-              color: "#0F0F0F",
-              marginBottom: "16px",
+              color: "#FAFAF9",
+              marginBottom: "20px",
               lineHeight: 1,
+              fontFamily: "system-ui, sans-serif",
             }}
           >
             {combo.name}
           </div>
           <div
             style={{
-              fontSize: "28px",
-              color: "#666",
-              marginBottom: "40px",
+              fontSize: "24px",
+              color: "#888888",
+              fontFamily: "system-ui, sans-serif",
             }}
           >
             {primaryFont.name}
             {primaryFont.id !== secondaryFont.id && ` + ${secondaryFont.name}`}
-          </div>
-          <div
-            style={{
-              fontSize: "20px",
-              color: "#888",
-              maxWidth: "700px",
-              lineHeight: 1.5,
-            }}
-          >
-            {combo.description}
           </div>
         </div>
 
@@ -135,12 +159,14 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             <span
               key={tag}
               style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 padding: "8px 16px",
-                background: "#F0F0F0",
-                color: "#666",
+                background: "#1A1A1A",
+                color: "#888888",
                 borderRadius: "20px",
-                textTransform: "capitalize",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                fontFamily: "system-ui, sans-serif",
               }}
             >
               {tag}
@@ -149,6 +175,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         </div>
       </div>
     ),
-    { ...size }
+    { ...size, fonts }
   );
 }

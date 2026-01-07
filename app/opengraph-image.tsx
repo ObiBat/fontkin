@@ -10,6 +10,11 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
+  // Fetch Anton font from Google Fonts
+  const antonFont = await fetch(
+    new URL("https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0K08i4gS7lu.woff2")
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -21,189 +26,54 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "60px",
         }}
       >
-        {/* Logo */}
+        {/* Wordmark Logo - matches UI exactly */}
         <div
           style={{
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
-            justifyContent: "center",
-            marginBottom: "40px",
+            gap: "24px",
           }}
         >
-          <div
-            style={{
-              width: "80px",
-              height: "80px",
-              background: "#FAFAF9",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginRight: "24px",
-              borderRadius: "16px",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "56px",
-                fontWeight: 900,
-                color: "#0F0F0F",
-                fontFamily: "Arial Black, sans-serif",
-              }}
-            >
-              F
-            </span>
-          </div>
           <span
             style={{
-              fontSize: "48px",
-              fontWeight: 900,
+              fontSize: "120px",
               color: "#FAFAF9",
-              letterSpacing: "0.05em",
+              letterSpacing: "0.04em",
               textTransform: "uppercase",
-              fontFamily: "Arial Black, sans-serif",
+              fontFamily: "Anton",
             }}
           >
             Fontkin
           </span>
-        </div>
 
-        {/* Tagline */}
-        <div
-          style={{
-            fontSize: "28px",
-            color: "#A0A0A0",
-            textTransform: "uppercase",
-            letterSpacing: "0.2em",
-            marginBottom: "60px",
-            fontFamily: "Arial, sans-serif",
-          }}
-        >
-          Professional Font Pairing Lab
-        </div>
-
-        {/* Sample Typography Preview */}
-        <div
-          style={{
-            display: "flex",
-            gap: "40px",
-            alignItems: "center",
-          }}
-        >
-          <div
+          {/* Minimal tagline */}
+          <span
             style={{
-              padding: "30px 50px",
-              border: "1px solid #333",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              fontSize: "18px",
+              color: "#666666",
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              fontFamily: "system-ui, sans-serif",
             }}
           >
-            <span
-              style={{
-                fontSize: "36px",
-                color: "#FAFAF9",
-                fontFamily: "Georgia, serif",
-                fontWeight: 400,
-                marginBottom: "8px",
-              }}
-            >
-              Playfair
-            </span>
-            <span
-              style={{
-                fontSize: "14px",
-                color: "#666",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              + Inter
-            </span>
-          </div>
-          <div
-            style={{
-              padding: "30px 50px",
-              border: "1px solid #333",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "36px",
-                color: "#FAFAF9",
-                fontFamily: "Arial, sans-serif",
-                fontWeight: 700,
-                marginBottom: "8px",
-              }}
-            >
-              Space
-            </span>
-            <span
-              style={{
-                fontSize: "14px",
-                color: "#666",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              + Lora
-            </span>
-          </div>
-          <div
-            style={{
-              padding: "30px 50px",
-              border: "1px solid #333",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <span
-              style={{
-                fontSize: "36px",
-                color: "#FAFAF9",
-                fontFamily: "Georgia, serif",
-                fontStyle: "italic",
-                marginBottom: "8px",
-              }}
-            >
-              Fraunces
-            </span>
-            <span
-              style={{
-                fontSize: "14px",
-                color: "#666",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-              }}
-            >
-              + DM Sans
-            </span>
-          </div>
-        </div>
-
-        {/* URL */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "40px",
-            fontSize: "16px",
-            color: "#666",
-            textTransform: "uppercase",
-            letterSpacing: "0.15em",
-          }}
-        >
-          fontkin.com
+            Font Pairing Lab
+          </span>
         </div>
       </div>
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "Anton",
+          data: antonFont,
+          style: "normal",
+          weight: 400,
+        },
+      ],
     }
   );
 }
