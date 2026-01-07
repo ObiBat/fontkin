@@ -16,7 +16,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 
   // Fetch Anton font from Google Fonts
   const antonFont = await fetch(
-    new URL("https://fonts.gstatic.com/s/anton/v25/1Ptgg87LROyAm0K08i4gS7lu.woff2")
+    "https://fonts.gstatic.com/s/anton/v27/1Ptgg87LROyAm0K0.ttf"
   ).then((res) => res.arrayBuffer());
 
   const fonts = [
